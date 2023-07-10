@@ -2,3 +2,5 @@
 <p>Name: <%= resident.name %>, Age: <%= resident.age %>, Occupation: <%= resident.occupation %></p>
 <br>
 <% end %>
+<br>
+<p>Average Age: <%= @residents.find_avg_age %></p>

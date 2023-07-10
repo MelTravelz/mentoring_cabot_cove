@@ -15,5 +15,11 @@ RSpec.describe "/residents", type: :feature do
       expect(page).to have_content("Name: #{@jessica.name}, Age: #{@jessica.age}, Occupation: #{@jessica.occupation}")
       expect(page).to have_content("Name: #{@seth.name}, Age: #{@seth.age}, Occupation: #{@seth.occupation}")
     end
+
+    it "displays the average age of all residents" do
+      visit "/residents"
+
+      expect(page).to have_content("Average Age: 67.5")
+    end
   end
 end
