@@ -31,6 +31,19 @@ Fork this repository and clone your newly created repository.
 ### Before Starting User Stories
 
 * This challenge uses a many-to-many table (your migrations are already built!), be sure to check your setup/schema carefully.
+
+*Ok, lets look at the relationships/associations between tables:*
+- RESIDENT has_many `resident_courses` & has_many `courses` through `resident_courses`
+- RESIDENT_COURSE belongs_to `residents` & belongs_to `courses`
+- COURSE has_many `resident_courses` & has_many `courses` through `resident_courses`
+
+*Note: for each record created, an id will be auto-generated:*
+- RESIDENT attributes/table columns: name(string), age(integer), occupation(string)
+- RESIDENT_COURSE attributes/table columns: resident:references, course:references
+- COURSE attributes/table columns: title(string)
+
+*Note: once you have your schema set up, copy that file and paste into a program like <https://dbdiagram.io/home> to see your schema diagram.*
+
 * You will have 10 failing model tests (Let your instructor know if you are not seeing 10 failing tests)
 * Get these 10 tests to pass before moving on to the user stories below.
 
