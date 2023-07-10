@@ -19,11 +19,11 @@ RSpec.describe "/courses", type: :feature do
       ResidentCourse.create!(resident_id: @mark.id, course_id: @course2.id)
 
       ResidentCourse.create!(resident_id: @jessica.id, course_id: @course3.id)
+
+      visit "/courses"
     end
 
     it "displays all courses" do
-      visit "/courses"
-
       expect(page).to have_content("Courses: Total Enrolled")
       expect(page).to have_content("#{@course1.name}: 3")
       expect(page).to have_content("#{@course2.name}: 2")
@@ -34,8 +34,6 @@ RSpec.describe "/courses", type: :feature do
     end
 
     it "displays all courses in alphabetical order" do
-      visit "/courses"
-
       # Here we are using the Orderly gem:
       expect(@course3.name).to appear_before(@course1.name)
       expect(@course1.name).to appear_before(@course2.name)
