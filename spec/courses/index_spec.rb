@@ -12,13 +12,13 @@ RSpec.describe "/courses", type: :feature do
       @course3 = Course.create!(name: "Medical Documentation")
       
       ResidentCourse.create!(resident_id: @jessica.id, course_id: @course1.id)
-      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course2.id)
-      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course3.id)
-
       ResidentCourse.create!(resident_id: @seth.id, course_id: @course1.id)
-
       ResidentCourse.create!(resident_id: @mark.id, course_id: @course1.id)
+
+      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course2.id)
       ResidentCourse.create!(resident_id: @mark.id, course_id: @course2.id)
+
+      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course3.id)
     end
 
     it "displays all courses" do
