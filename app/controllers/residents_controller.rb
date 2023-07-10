@@ -1,6 +1,6 @@
 class ResidentsController < ApplicationController
   def index
-    @residents = Resident.all
+    @residents = Resident.all.alphabetize
   end
 
   def show

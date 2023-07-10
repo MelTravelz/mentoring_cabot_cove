@@ -21,5 +21,15 @@ RSpec.describe "/residents", type: :feature do
 
       expect(page).to have_content("Average Age: 67.5")
     end
+
+    it "displays all residents in alphabetical order" do
+      andy = Resident.create(name: "Andy Markerson", age: 26, occupation: "Graduate Student")
+
+      visit "/residents"
+
+      # Here we are using the Orderly gem:
+      expect(andy.name).to appear_before(@jessica.name)
+      expect(@jessica.name).to appear_before(@seth.name)
+    end
   end
 end
