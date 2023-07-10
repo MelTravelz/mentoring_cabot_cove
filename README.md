@@ -106,6 +106,10 @@ I see the average age of all residents.
 ```
 User Story Extension
 
+*Note: these two classes both have an attribute named 'name'*
+*AND the method would essential do the same thing: order alplhabetically...what does this lead us to do?*
+
 Residents index page shows residents in alphabetical order.
 Courses index page shows courses in alphabetical order.
-And the courses index page also shows residents per course in alphabetical order.
+
+SKIP for now: And the courses index page also shows residents per course in alphabetical order.
