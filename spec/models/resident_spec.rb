@@ -13,4 +13,22 @@ RSpec.describe Resident, type: :model do
     it {should have_many(:courses).through(:resident_courses)}
   end
 
+  describe "class methods" do
+    before(:each) do
+      @jessica = Resident.create(name: "Jessica Fletcher", age: 65, occupation: "Mystery Writer")
+      @seth = Resident.create(name: "Seth Hazlitt", age: 70, occupation: "Town Doctor")
+    end 
+
+    describe ":find_avg_age" do
+      it "returns the average age of all residents" do
+        expect(Resident.find_avg_age).to eq(67.5)
+
+        @mark = Resident.create(name: "Mark Markerson", age: 28, occupation: "Graduate Student")
+
+        # Note: If .round(2) is considered display logic and added in the view, 
+        # you'll need to add it in the test: Resident.find_avg_age.round(2)
+        expect(Resident.find_avg_age).to eq(54.33)
+      end
+    end
+  end
 end
