@@ -5,8 +5,17 @@ RSpec.describe "/residents/:id", type: :feature do
     before(:each) do
       @jessica = Resident.create!(name: "Jessica Fletcher", age: 65, occupation: "Mystery Writer")
 
-      @course1 = @jessica.courses.create!(name: "Crime Scenes")
-      @course2 = @jessica.courses.create!(name: "Fingerprinting")
+      # Option 1: careful since this creates a new course each time:
+      # @course1 = @jessica.courses.create!(name: "Crime Scenes")
+      # @course2 = @jessica.courses.create!(name: "Fingerprinting")
+
+      # Option 2: this creates the course once and then creates a join-table record linking the resident to the course
+      # (this is my preferred method)
+      @course1 = Course.create!(name: "Crime Scenes")
+      @course2 = Course.create!(name: "Fingerprinting")
+      
+      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course1.id)
+      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course2.id)
     end
 
     it "displays resident name & list of courses" do

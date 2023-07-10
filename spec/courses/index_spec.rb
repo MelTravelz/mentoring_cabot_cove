@@ -1,17 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Course, type: :model do
-
-  describe "validations" do
-    it { should validate_presence_of :name }
-  end
-
-  describe "relationships" do
-    it { should have_many :resident_courses }
-    it { should have_many(:residents).through(:resident_courses) }
-  end
-
-  describe "instance methods" do
+RSpec.describe "/courses", type: :feature do
+  describe "when I visit the courses index page" do
     before(:each) do
       @jessica = Resident.create(name: "Jessica Fletcher", age: 65, occupation: "Mystery Writer")
       @seth = Resident.create(name: "Seth Hazlitt", age: 70, occupation: "Town Doctor")
@@ -27,14 +17,21 @@ RSpec.describe Course, type: :model do
 
       ResidentCourse.create!(resident_id: @jessica.id, course_id: @course2.id)
       ResidentCourse.create!(resident_id: @mark.id, course_id: @course2.id)
+
+      ResidentCourse.create!(resident_id: @jessica.id, course_id: @course3.id)
     end
 
-    describe "#total_resident_count" do
-      it "returns the total count of all residents in a course" do
-        expect(@course1.total_resident_count).to eq(3)
-        expect(@course2.total_resident_count).to eq(2)
-        expect(@course3.total_resident_count).to eq(0)
-      end
+    it "displays all courses" do
+      visit "/courses"
+
+      expect(page).to have_content("Courses: Total Enrolled")
+      expect(page).to have_content("#{@course1.name}: 3")
+      expect(page).to have_content("#{@course2.name}: 2")
+      expect(page).to have_content("#{@course3.name}: 1")
+
+      # Alternative: 
+      # expect(page).to have_content("#{@course1.name}: #{@course1.residents.size}")
+
     end
   end
 end
