@@ -1,0 +1,6 @@
+<p>Courses: Total Enrolled</p>
+
+<% @courses.each do |course| %>
+  <p><%= course.name %>: <%= course.residents.size %></p>
+  <br>
+<% end %>

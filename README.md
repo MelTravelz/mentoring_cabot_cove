@@ -34,7 +34,7 @@ Fork this repository and clone your newly created repository.
 
 *Ok, lets look at the relationships/associations between tables:*
 - RESIDENT has_many `resident_courses` & has_many `courses` through `resident_courses`
-- RESIDENT_COURSE belongs_to `residents` & belongs_to `courses`
+- RESIDENT_COURSE belongs_to a `resident` & belongs_to a `course`
 - COURSE has_many `resident_courses` & has_many `courses` through `resident_courses`
 
 *Note: for each record created, an id will be auto-generated:*
