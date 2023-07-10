@@ -37,4 +37,20 @@ RSpec.describe Course, type: :model do
       end
     end
   end
+
+  describe "class methods" do
+    before(:each) do
+      @course1 = Course.create!(name: "Crime Scenes")
+      @course2 = Course.create!(name: "Fingerprinting")
+      @course3 = Course.create!(name: "Medical Documentation")
+      @course4 = Course.create!(name: "Anatomy")
+      @course5 = Course.create!(name: "Dentistry")
+    end
+    
+    describe ":alphabetize" do #find this method in the application_record.rb file! 
+      it "orders all courses by name alphabetically" do
+        expect(Course.alphabetize).to eq([@course4, @course1, @course5, @course2, @course3])
+      end
+    end
+  end
 end

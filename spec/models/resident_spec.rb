@@ -30,5 +30,14 @@ RSpec.describe Resident, type: :model do
         expect(Resident.find_avg_age).to eq(54.33)
       end
     end
+
+    describe ":alphabetize" do #find this method in the application_record.rb file! 
+      it "orders all residents by name alphabetically" do
+        @zeva = Resident.create(name: "Zeva Zelington", age: 40, occupation: "Graduate Student")
+        @andy = Resident.create(name: "Andy Markerson", age: 26, occupation: "Graduate Student")
+
+        expect(Resident.alphabetize).to eq([@andy, @jessica, @seth, @zeva])
+      end
+    end
   end
 end
