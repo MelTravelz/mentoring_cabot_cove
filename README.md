@@ -40,7 +40,7 @@ Fork this repository and clone your newly created repository.
 *Note: for each record created, an id will be auto-generated:*
 - RESIDENT attributes/table columns: name(string), age(integer), occupation(string)
 - RESIDENT_COURSE attributes/table columns: resident:references, course:references
-- COURSE attributes/table columns: title(string)
+- COURSE attributes/table columns: title(string)->changed to: name(string)
 
 *Note: once you have your schema set up, copy that file and paste into a program like <https://dbdiagram.io/home> to see your schema diagram.*
 
